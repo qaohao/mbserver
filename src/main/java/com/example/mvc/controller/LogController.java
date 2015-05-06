@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.zip.GZIPInputStream;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,22 +31,23 @@ import com.example.mvc.service.LogService;
 public class LogController {
 	public static final String OK = "ok";
 	public static final String FAIL = "fail";
-	
-	private static final  Logger logger = LoggerFactory
-            .getLogger(LogController.class);
-	
+
+	private static final Logger logger = LoggerFactory
+			.getLogger(LogController.class);
+
 	@Autowired
 	private LogService logService;
-	
+
+	private HttpServletRequest request;
+
 	/**
 	 * 收集日志
 	 * 
 	 * @return 状态
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	@RequestMapping("{mac}/log-collection")
-	public @ResponseBody String collect(@PathVariable String mac,
-			HttpServletRequest request, HttpServletResponse response)
+	public @ResponseBody String collect(@PathVariable String mac)
 			throws IOException {
 
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
@@ -74,5 +76,10 @@ public class LogController {
 		}
 
 		return OK;
+	}
+
+	@Resource
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
 	}
 }
