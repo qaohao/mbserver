@@ -62,6 +62,9 @@
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>${org.apache.tomcat.maven.version}</version>
+                <configuration>
+                	<port>${tomcat.port}</port>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -341,6 +344,7 @@
 		</dependency>
     </dependencies>
     <properties>
+    	<tomcat.port>9000</tomcat.port>
         <cglib.version>2.2.2</cglib.version>
         <commons-dbcp.version>1.2.2</commons-dbcp.version>
         <commons-fileupload.version>1.2.2</commons-fileupload.version>
