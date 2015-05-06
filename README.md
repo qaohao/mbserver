@@ -30,5 +30,5 @@ $ mvn clean eclipse:clean eclipse:eclipse -P hsqldb
 tested only on Tomcat7 (not use JTA)
 
 $ mvn clean tomcat7:run -P h2
-access http://localhost:8080/springmvc-jpa-blank
+access http://localhost:9000/mbserver
 
